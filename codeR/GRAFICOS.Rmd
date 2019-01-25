@@ -1,0 +1,54 @@
+---
+title: "GRAFICOS"
+author: "Camilo Pérez"
+date: "24 de enero de 2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 1. COMBINACIÓN DE GRÁFICAS
+
+```{r cars}
+
+
+#  ejecutamos la libreria readr
+library(readr)
+
+# leemos el archivo de nombre (datos2.csv) y lo ejecutamos con la variable dat
+
+dat <- read.csv("D:/CURSOS/Edx_R/HOME/PROJECTS/PROJECT_2/data/datos2.csv")
+
+View(dat)
+
+#variables
+temperatura <- dat[,4]
+humedad_relativa <- dat[,5]
+punto_de_rocio <- dat[,6]
+direccion_viento <- dat[,14]
+
+
+```
+## GRAFICO DOS FILAS Y DOS COLUMNAS
+```{r}
+#funciones 
+par(mfrow=c(2,2)) # (FILAS, COLUMNAS)
+plot(temperatura, humedad_relativa, main = "temp vs hum")
+plot(temperatura, punto_de_rocio, main = "temp vs dp")
+hist(direccion_viento, main = "histograma direccion del viento")
+boxplot(humedad_relativa, main = "boxplot humedad relativa")
+
+```
+
+##GRAFICO TRES FILAS, UNA COLUMNA
+
+```{r}
+
+par(mfrow=c(3,1))
+plot(humedad_relativa, main = "hum")
+plot(punto_de_rocio, main = " dp")
+hist(direccion_viento, main = "histograma direccion del viento")
+```
+
